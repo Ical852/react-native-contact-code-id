@@ -43,6 +43,7 @@ const AddContact: React.FC<AddScreenProps> = props => {
           value={add.age}
           placeHolder="Fill your age"
           onChangeText={value => add.setAge(value)}
+          keyboardType="numeric"
         />
         <CustomInput
           title="Photo"

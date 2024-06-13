@@ -31,7 +31,7 @@ export const useHome = (props: HomeScreenProps) => {
       (fil: Contact) =>
         fil?.firstName?.toLocaleLowerCase()?.includes(search) ||
         fil?.lastName?.toLocaleLowerCase()?.includes(search) ||
-        fil?.age?.includes(search),
+        fil?.age?.toString()?.includes(search),
     );
   }, [search]);
 
