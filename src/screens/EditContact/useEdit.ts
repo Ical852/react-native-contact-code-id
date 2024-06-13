@@ -47,7 +47,7 @@ export const useEdit = (props: EditScreenProps) => {
       });
       updateContactReset();
       setTimeout(() => {
-        navigation.replace('HomeContact');
+        navigation.goBack();
       }, 1000);
     }
     if (updateContactSuccess) {
@@ -58,7 +58,7 @@ export const useEdit = (props: EditScreenProps) => {
       });
       updateContactReset();
       setTimeout(() => {
-        navigation.replace('HomeContact');
+        navigation.goBack();
       }, 1000);
     }
     return;

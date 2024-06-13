@@ -59,7 +59,7 @@ export const useAdd = (props: AddScreenProps) => {
       });
       saveContactReset();
       setTimeout(() => {
-        navigation.replace('HomeContact');
+        navigation.goBack();
       }, 1000);
     }
     return;

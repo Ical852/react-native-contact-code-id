@@ -3,6 +3,7 @@ import {constants} from '../../utils';
 import {Contact, HomeScreenProps} from '../../types';
 import {Alert} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
+import {useFocusEffect} from '@react-navigation/native';
 
 export const useHome = (props: HomeScreenProps) => {
   const {
@@ -63,10 +64,12 @@ export const useHome = (props: HomeScreenProps) => {
     getAllContact();
   }, []);
 
-  useEffect(() => {
-    fetchAllContacts();
-    return () => {};
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchAllContacts();
+      return () => {};
+    }, []),
+  );
 
   useEffect(() => {
     if (deleteContactError) {
