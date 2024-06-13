@@ -29,8 +29,8 @@ export const useHome = (props: HomeScreenProps) => {
   const filtered = useMemo(() => {
     return getAllContactResponse?.data?.filter(
       (fil: Contact) =>
-        fil?.firstName?.toLocaleLowerCase()?.includes(search) ||
-        fil?.lastName?.toLocaleLowerCase()?.includes(search) ||
+        fil?.firstName?.toLowerCase()?.includes(search) ||
+        fil?.lastName?.toLowerCase()?.includes(search) ||
         fil?.age?.toString()?.includes(search),
     );
   }, [search]);
