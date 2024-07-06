@@ -26,5 +26,17 @@ export const styles = StyleSheet.create({
   badgeText: {
     fontSize: 10,
     color: 'white'
+  },
+  desc: {
+    fontSize: 10
+  },
+  detailBtn: {
+    backgroundColor: colors.primary
+  },
+  ageTitle: {
+    color: colors.primary
+  },
+  dtlText: {
+    fontSize: 10
   }
 });
