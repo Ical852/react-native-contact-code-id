@@ -1,16 +1,16 @@
 import React, { useMemo } from 'react';
-import { FlatList, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 import tw from 'twrnc';
 
 import { IconBack, IconSearch } from '../../assets';
-import { ContactCard, FailedFetch, Gap, GridContactCard, Loading } from '../../components';
+import { FailedFetch, GridContactCard, Loading } from '../../components';
 import { AppDispatch, RootState } from '../../redux/store';
 
 import {
   getAllContact,
 } from '../../redux/contact/actions';
-import { Contact, SearchScreenProps } from '../../types';
+import { SearchScreenProps } from '../../types';
 import { styles } from './styles';
 import { useSearch } from './useSearch';
 import { TextInput } from 'react-native-gesture-handler';
@@ -55,7 +55,7 @@ const SearchContact: React.FC<SearchScreenProps> = props => {
         renderItem={(item) => (
           <GridContactCard 
             itemMap={item}
-            onPress={src.onDetail} 
+            onPress={src.onDetail}
           />
         )}
         keyExtractor={item => item.id}

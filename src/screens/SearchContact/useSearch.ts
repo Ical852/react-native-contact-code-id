@@ -18,10 +18,11 @@ export const useSearch = (props: SearchScreenProps) => {
 
   const filtered = useMemo(() => {
     return getAllContactResponse?.data?.filter(
-      (fil: Contact) =>
-        fil?.firstName?.toLowerCase()?.includes(search) ||
-        fil?.lastName?.toLowerCase()?.includes(search) ||
-        fil?.age?.toString()?.includes(search),
+      (fil: Contact) => {
+        const name = fil?.firstName + " " + fil?.lastName
+        return name?.toLowerCase()?.includes(search) ||
+          fil?.age?.toString()?.includes(search);
+      }
     );
   }, [search]);
 

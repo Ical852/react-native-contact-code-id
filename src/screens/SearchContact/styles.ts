@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.primary
   },
   listContainer: {
-    paddingHorizontal: 18,
+    paddingHorizontal: 16,
     paddingBottom: 32
   }
 });

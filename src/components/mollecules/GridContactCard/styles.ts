@@ -1,4 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
+import { colors } from '../../../utils';
+
 export const styles = StyleSheet.create({
   card: {
     height: 264,
@@ -15,8 +17,32 @@ export const styles = StyleSheet.create({
 
     elevation: 3,
 
-    marginTop: 13,
-    marginRight: 13,
+    marginTop: 14,
+    marginRight: 14,
     borderRadius: 8
-  }
+  },
+  img: {
+    height: 137
+  },
+  badge: {
+    backgroundColor: colors.primary
+  },
+  badgeText: {
+    fontSize: 10,
+    color: 'white'
+  },
+
+  detailBtn: {
+    backgroundColor: colors.primary
+  },
+  ageTitle: {
+    color: colors.primary
+  },
+  dtlText: {
+    fontSize: 10
+  },
+  desc: {
+    fontSize: 10
+  },
 });
+ 
