@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { FlatList, TouchableOpacity, View } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 import tw from 'twrnc';
 
@@ -46,6 +46,13 @@ const SearchContact: React.FC<SearchScreenProps> = props => {
     if (src.loading) return <Loading />;
     if (src.getAllContactError) {
       return <FailedFetch onRefresh={src.fetchAllContacts} />;
+    }
+    if (src.data?.length < 1) {
+      return (
+        <View style={[tw`flex-1 justify-center items-center`]}>
+          <Text style={[tw`text-gray-400 text-base font-semibold`]}>No Contact Found</Text>
+        </View>
+      )
     }
 
     return (
