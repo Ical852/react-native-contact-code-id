@@ -12,4 +12,10 @@ export const styles = StyleSheet.create<any>({
     left: 20,
     right: 20,
   },
+  header: {
+    backgroundColor: colors.primary
+  },
+  topTitle: {
+    height: 72
+  }
 });

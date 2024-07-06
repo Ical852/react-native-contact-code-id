@@ -2,14 +2,19 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {RootStackParamList} from './routeParam';
-import {HomeContact, DetailContact, AddContact, EditContact} from '../screens';
+import {HomeContact, DetailContact, AddContact, EditContact, Splash} from '../screens';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeContact">
+      <Stack.Navigator initialRouteName="Splash">
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Splash"
+          component={Splash}
+        />
         <Stack.Screen
           options={{headerShown: false}}
           name="HomeContact"

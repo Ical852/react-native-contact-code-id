@@ -7,6 +7,7 @@ import {
   HomeScreenProps,
   AddScreenProps,
   EditScreenProps,
+  SplashScreenProps,
 } from './contacts';
 
 export type {
@@ -18,4 +19,5 @@ export type {
   HomeScreenProps,
   AddScreenProps,
   EditScreenProps,
+  SplashScreenProps,
 };

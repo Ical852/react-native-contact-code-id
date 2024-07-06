@@ -1,18 +1,14 @@
 import React from 'react';
 import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
 import tw from 'twrnc';
 
-import {colors} from '../../utils';
 import {IconSearch} from '../../assets';
 import {ContactCard, FailedFetch, Gap, Loading} from '../../components';
 import {AppDispatch, RootState} from '../../redux/store';
 
 import {
   getAllContact,
-  deleteContact,
-  deleteContactReset,
 } from '../../redux/contact/actions';
 import {Contact, HomeScreenProps} from '../../types';
 import {styles} from './styles';
@@ -23,44 +19,32 @@ const HomeContact: React.FC<HomeScreenProps> = props => {
 
   const _renderHomeHeader = React.useMemo(() => {
     return (
-      <View style={[tw`m-5 flex-row items-center justify-between`]}>
-        <View>
-          <Text style={[tw`text-sm text-gray-500`]}>Hello</Text>
-          <Text style={[tw`text-lg font-bold text-black`]}>Hi User</Text>
+      <View style={[tw`items-center p-6 rounded-b-xl`, styles.header]}>
+        <View style={[tw`flex-row items-center justify-between w-full`]}>
+          <View style={[styles.topTitle]}>
+            <Text style={[tw`text-2xl font-bold text-white`]}>Hello,</Text>
+            <Text style={[tw`text-2xl font-bold text-white`]}>User Contact Apps</Text>
+          </View>
+          <View
+            style={[
+              tw`h-14 w-14 rounded-full justify-center items-center bg-white`,
+            ]}>
+            <Image
+              source={{uri: home.userImg}}
+              style={[tw`w-12 h-12 rounded-full`]}
+            />
+          </View>
         </View>
-        <View
-          style={[
-            tw`h-20 w-20 rounded-full justify-center items-center`,
-            {backgroundColor: colors.primary},
-          ]}>
-          <Image
-            source={{uri: home.userImg}}
-            style={[tw`w-16 h-16 rounded-full`]}
-          />
-        </View>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={home.onSearch}
+          style={[tw`mt-3 px-3 flex-row items-center w-full h-10 bg-white rounded rounded-lg`]}>
+          <IconSearch />
+          <Text style={[tw`ml-3`]}>Search your contact here</Text>
+        </TouchableOpacity>
       </View>
     );
   }, []);
-
-  const _renderSearchBar = React.useMemo(() => {
-    return (
-      <View
-        style={[
-          tw`flex-row items-center mx-5 border px-4 rounded-xl`,
-          styles.searchCont(home.focus),
-        ]}>
-        <IconSearch />
-        <TextInput
-          style={[tw`flex-1 ml-2`]}
-          placeholder="Search contact"
-          onFocus={() => home.setFocus(true)}
-          onEndEditing={() => home.setFocus(false)}
-          value={home.search}
-          onChangeText={(text: any) => home.setSearch(text)}
-        />
-      </View>
-    );
-  }, [home.focus, home.search]);
 
   const _renderContactList = React.useMemo(() => {
     if (home.loading) return <Loading />;
@@ -70,15 +54,16 @@ const HomeContact: React.FC<HomeScreenProps> = props => {
 
     return (
       <ScrollView showsVerticalScrollIndicator={false} style={[tw`flex-1`]}>
-        {_renderSearchBar}
+        <Gap height={24} />
+        <View style={[tw`mx-5`]}>
+          <Text style={[tw`text-black text-sm font-bold`]}>All Contacts</Text>
+          <Text style={[tw`text-grey-300 text-xs font-normal mt-0.5`]}>All contacts from contact apps</Text>
+        </View>
         <Gap height={24} />
         {home.data?.map((data: Contact) => (
           <ContactCard
             key={data.id}
-            fullName={`${data.firstName || ''} ${data.lastName || ''}`}
-            age={data.age}
-            onDelete={() => home.onDelete(data)}
-            onEdit={() => home.onEdit(data)}
+            contact={data}
           />
         ))}
         <Gap height={100} />
@@ -88,8 +73,6 @@ const HomeContact: React.FC<HomeScreenProps> = props => {
     home.loading,
     home.data,
     home.getAllContactError,
-    _renderSearchBar,
-    home.onDelete,
   ]);
 
   const _renderAddButton = React.useMemo(() => {
@@ -119,17 +102,10 @@ const mapStateToProps = (state: RootState) => ({
   getAllContactLoading: state.contact.getAllContactLoading,
   getAllContactError: state.contact.getAllContactError,
   getAllContactResponse: state.contact.getAllContactResponse,
-
-  deleteContactLoading: state.contact.deleteContactLoading,
-  deleteContactError: state.contact.deleteContactError,
-  deleteContactSuccess: state.contact.deleteContactSuccess,
-  deleteContactResponse: state.contact.deleteContactResponse,
 });
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({
   getAllContact: () => dispatch(getAllContact()),
-  deleteContact: (payload: any) => dispatch(deleteContact(payload)),
-  deleteContactReset: () => dispatch(deleteContactReset()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContact);

@@ -29,6 +29,18 @@ export interface Contact {
   photo: string;
 }
 
+export interface SplashScreenProps {
+  navigation: any
+}
+
+export interface HomeScreenProps {
+  getAllContact: () => void;
+  getAllContactLoading: boolean;
+  getAllContactError: boolean;
+  getAllContactResponse: any;
+  navigation: any;
+}
+
 export interface AddScreenProps {
   saveContact: (payload: any) => void;
   saveContactReset: () => void;
@@ -47,17 +59,10 @@ export interface EditScreenProps {
   updateContactSuccess: boolean;
   updateContactResponse: any;
   navigation: any;
-  route: {
-    params: Contact;
-  };
+  route: any
 }
 
-export interface HomeScreenProps {
-  getAllContact: () => void;
-  getAllContactLoading: boolean;
-  getAllContactError: boolean;
-  getAllContactResponse: any;
-
+export interface DetailScreenProps {
   deleteContact: (payload: any) => void;
   deleteContactReset: () => void;
   deleteContactLoading: boolean;
@@ -65,4 +70,7 @@ export interface HomeScreenProps {
   deleteContactSuccess: boolean;
   deleteContactResponse: any;
   navigation: any;
+  route: {
+    params: any,
+  }
 }

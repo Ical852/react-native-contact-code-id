@@ -2,6 +2,8 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
+    height: 150,
+
     backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: {
