@@ -2,18 +2,16 @@ import {StyleSheet} from 'react-native';
 import {colors} from '../../utils';
 
 export const styles = StyleSheet.create({
-  container: {},
-  addBtn: {
-    bottom: 32,
-    backgroundColor: colors.primary,
-    left: 20,
-    right: 20,
+  container: {
+    flex: 1,
+    backgroundColor: 'white'
   },
   header: {
+    height: 72,
     backgroundColor: colors.primary
   },
-  topTitle: {
-    height: 72
+  listContainer: {
+    paddingHorizontal: 18,
+    paddingBottom: 32
   }
 });
-2

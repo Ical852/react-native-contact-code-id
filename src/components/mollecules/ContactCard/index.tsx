@@ -37,7 +37,7 @@ const ContactCard = (props: ContacCardProps) => {
             style={[tw`text-gray-400 mt-2`, styles.desc]}>
             {`${firstName} ${lastName}`} is your new contact, click the detail so the contact detail
           </Text>
-          <View style={[tw`flex-1 flex-row item-center justify-between mt-2`]}>
+          <View style={[tw`flex-1 flex-row items-center justify-between mt-2`]}>
             <Text style={[tw`text-sm font-bold`, styles.ageTitle]}>Age : {age}</Text>
             <TouchableOpacity 
               onPress={onDetail}

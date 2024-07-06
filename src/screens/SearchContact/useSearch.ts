@@ -31,7 +31,9 @@ export const useSearch = (props: SearchScreenProps) => {
     },
     [navigation],
   );
-  
+  const onBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
   const fetchAllContacts = useCallback(() => {
     getAllContact();
   }, []);
@@ -52,5 +54,6 @@ export const useSearch = (props: SearchScreenProps) => {
     search,
     setSearch,
     onDetail,
+    onBack,
   };
 };
