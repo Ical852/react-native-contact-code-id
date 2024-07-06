@@ -1,7 +1,8 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../utils';
 
-export const styles = StyleSheet.create<any>({
+export const styles = StyleSheet.create({
+  container: {},
   addBtn: {
     bottom: 32,
     backgroundColor: colors.primary,
@@ -15,3 +16,4 @@ export const styles = StyleSheet.create<any>({
     height: 72
   }
 });
+2

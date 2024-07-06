@@ -1,7 +1,8 @@
+import Splash from './Splash';
 import HomeContact from './HomeContact';
 import DetailContact from './DetailContact';
 import AddContact from './AddContact';
 import EditContact from './EditContact';
-import Splash from './Splash';
+import SearchContact from './SearchContact';
 
-export {HomeContact, DetailContact, AddContact, EditContact, Splash};
+export {Splash, HomeContact, DetailContact, AddContact, EditContact, SearchContact};

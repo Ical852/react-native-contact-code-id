@@ -8,6 +8,8 @@ import {
   AddScreenProps,
   EditScreenProps,
   SplashScreenProps,
+  DetailScreenProps,
+  SearchScreenProps,
 } from './contacts';
 
 export type {
@@ -20,4 +22,6 @@ export type {
   AddScreenProps,
   EditScreenProps,
   SplashScreenProps,
+  DetailScreenProps,
+  SearchScreenProps,
 };

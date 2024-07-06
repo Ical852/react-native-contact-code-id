@@ -1,9 +1,9 @@
-import {useCallback} from 'react';
-import {useFocusEffect} from '@react-navigation/native';
-import {Contact, HomeScreenProps} from '../../types';
+import {useCallback, useMemo, useState} from 'react';
 import {constants} from '../../utils';
+import {Contact, SearchScreenProps} from '../../types';
+import {useFocusEffect} from '@react-navigation/native';
 
-export const useHome = (props: HomeScreenProps) => {
+export const useSearch = (props: SearchScreenProps) => {
   const {
     navigation,
 
@@ -14,21 +14,24 @@ export const useHome = (props: HomeScreenProps) => {
   } = props;
   const userImg = constants.pubUrl;
 
+  const [search, setSearch] = useState('');
+
+  const filtered = useMemo(() => {
+    return getAllContactResponse?.data?.filter(
+      (fil: Contact) =>
+        fil?.firstName?.toLowerCase()?.includes(search) ||
+        fil?.lastName?.toLowerCase()?.includes(search) ||
+        fil?.age?.toString()?.includes(search),
+    );
+  }, [search]);
+
   const onDetail = useCallback(
     (data: Contact) => {
       navigation.navigate('DetailContact', data);
     },
     [navigation],
   );
-  const onAddBtn = useCallback(() => {
-    navigation.navigate('AddContact');
-  }, [navigation]);
-  const onSearch = useCallback(
-    () => {
-      navigation.navigate('SearchContact');
-    },
-    [navigation],
-  )
+  
   const fetchAllContacts = useCallback(() => {
     getAllContact();
   }, []);
@@ -42,12 +45,12 @@ export const useHome = (props: HomeScreenProps) => {
 
   return {
     userImg,
-    onAddBtn,
     loading: getAllContactLoading,
     getAllContactError,
-    data: getAllContactResponse?.data || [],
+    data: filtered || getAllContactResponse?.data || [],
     fetchAllContacts,
-    onSearch,
+    search,
+    setSearch,
     onDetail,
   };
 };

@@ -57,11 +57,12 @@ const HomeContact: React.FC<HomeScreenProps> = props => {
         <Gap height={24} />
         <View style={[tw`mx-5`]}>
           <Text style={[tw`text-black text-sm font-bold`]}>All Contacts</Text>
-          <Text style={[tw`text-grey-300 text-xs font-normal mt-0.5`]}>All contacts from contact apps</Text>
+          <Text style={[tw`text-gray-400 text-xs font-normal mt-0.5`]}>All contacts from contact apps</Text>
         </View>
         <Gap height={24} />
         {home.data?.map((data: Contact) => (
           <ContactCard
+            onDetail={() => home.onDetail(data)}
             key={data.id}
             contact={data}
           />

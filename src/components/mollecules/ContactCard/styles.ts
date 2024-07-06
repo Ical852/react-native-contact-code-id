@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { colors } from '../../../utils';
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,4 +16,15 @@ export const styles = StyleSheet.create({
 
     elevation: 3,
   },
+  photo: {
+    width: 118,
+    height: 118,
+  },
+  badge: {
+    backgroundColor: colors.primary
+  },
+  badgeText: {
+    fontSize: 10,
+    color: 'white'
+  }
 });

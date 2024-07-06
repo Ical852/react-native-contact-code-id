@@ -74,3 +74,11 @@ export interface DetailScreenProps {
     params: any,
   }
 }
+
+export interface SearchScreenProps {
+  getAllContact: () => void;
+  getAllContactLoading: boolean;
+  getAllContactError: boolean;
+  getAllContactResponse: any;
+  navigation: any;
+}
