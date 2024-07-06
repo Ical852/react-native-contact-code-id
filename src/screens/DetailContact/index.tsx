@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import {connect} from 'react-redux';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {ActivityIndicator, Image, Text, TouchableOpacity, View} from 'react-native';
 import tw from 'twrnc';
 
 import {
@@ -9,10 +9,10 @@ import {
 } from '../../redux/contact/actions';
 
 import {AppDispatch, RootState} from '../../redux/store';
-import {styles} from './styles';
-import { useDetail } from './useDetail';
-import { Header } from '../../components';
 import { IconEdit, IconTrash } from '../../assets';
+import { Header } from '../../components';
+import { useDetail } from './useDetail';
+import {styles} from './styles';
 
 const DetailContact: React.FC<any> = props => {
   const dtl = useDetail(props);
@@ -40,11 +40,12 @@ const DetailContact: React.FC<any> = props => {
               <Text style={[tw`ml-2 font-semibold`, styles.age]}>Age : {dtl.detail.age}</Text>
             </View>
           </View>
-          <TouchableOpacity 
+          <TouchableOpacity
+            disabled={dtl.loading}
             onPress={dtl.onDelete}
             activeOpacity={0.7}
             style={[tw`rounded-full justify-center items-center`, styles.delBtn]}>
-            <IconTrash />
+            {dtl.loading ? <ActivityIndicator size="large" color={'white'} /> : <IconTrash />}
           </TouchableOpacity>
         </View>
         <View style={[tw`mt-6`]}>
@@ -57,11 +58,12 @@ const DetailContact: React.FC<any> = props => {
         </View>
       </View>
     )
-  }, [dtl.detail]);
+  }, [dtl.detail, dtl.loading]);
 
   const _renderAddButton = React.useMemo(() => {
     return (
       <TouchableOpacity
+        disabled={dtl.loading}
         onPress={() => dtl.onEdit(dtl.detail)}
         activeOpacity={0.7}
         style={[
@@ -72,7 +74,7 @@ const DetailContact: React.FC<any> = props => {
         <Text style={[tw`text-white font-semibold ml-3`]}>Edit Contact</Text>
       </TouchableOpacity>
     );
-  }, [dtl.onEdit, dtl.detail]);
+  }, [dtl.onEdit, dtl.detail, dtl.loading]);
 
   return (
     <View style={[tw`flex-1 bg-white`]}>

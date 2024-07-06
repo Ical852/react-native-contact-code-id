@@ -53,7 +53,6 @@ function* updateContact(action: ReduxActionParams): Generator {
     const response = yield call(contactApi.updateContact, action.payload);
     yield put(updateContactSuccess(response));
   } catch (error: any) {
-    console.log(error);
     yield put(updateContactFailed(error.message));
   }
 }

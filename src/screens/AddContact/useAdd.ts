@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useMemo, useState} from 'react';
-import {AddScreenProps} from '../../types';
 import {showMessage} from 'react-native-flash-message';
+import {AddScreenProps} from '../../types';
 
 export const useAdd = (props: AddScreenProps) => {
   const {
@@ -34,13 +34,6 @@ export const useAdd = (props: AddScreenProps) => {
     setAge('');
     setPhoto('');
   }, [disabledSubmit]);
-
-  useEffect(() => {
-    if (saveContactError) {
-      saveContactReset();
-    }
-    return;
-  }, [saveContactResponse]);
 
   useEffect(() => {
     if (saveContactError) {

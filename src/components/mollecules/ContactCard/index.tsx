@@ -1,5 +1,5 @@
-import {Image, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import tw from 'twrnc';
 
 import {styles} from './styles';

@@ -1,5 +1,11 @@
-import {AddScreenProps, EditScreenProps, HomeScreenProps, SplashScreenProps} from '../types';
-import { DetailScreenProps, SearchScreenProps } from '../types/modules/contacts';
+import {
+  AddScreenProps,
+  EditScreenProps,
+  HomeScreenProps,
+  SplashScreenProps,
+  DetailScreenProps,
+  SearchScreenProps
+} from '../types';
 
 export type RootStackParamList = {
   Splash: React.FC<SplashScreenProps>;

@@ -21,7 +21,6 @@ export const contactApi = {
     return response.data;
   },
   updateContact: async (payload: UpdateContactPayload) => {
-    console.log(payload);
     const response = await axios.put(
       BASE_RUL + `/contact/${payload?.id}`,
       payload,

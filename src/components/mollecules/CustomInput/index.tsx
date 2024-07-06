@@ -1,5 +1,5 @@
-import {KeyboardTypeOptions, Text, TextInput, View} from 'react-native';
 import React from 'react';
+import {KeyboardTypeOptions, Text, TextInput, View} from 'react-native';
 import tw from 'twrnc';
 
 interface CustomInputProps {

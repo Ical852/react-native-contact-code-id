@@ -5,4 +5,11 @@ import AddContact from './AddContact';
 import EditContact from './EditContact';
 import SearchContact from './SearchContact';
 
-export {Splash, HomeContact, DetailContact, AddContact, EditContact, SearchContact};
+export {
+  Splash,
+  HomeContact,
+  DetailContact,
+  AddContact,
+  EditContact,
+  SearchContact
+};

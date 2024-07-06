@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {CustomInput, Gap, Header} from '../../components';
 import tw from 'twrnc';
+import {CustomInput, Gap, Header} from '../../components';
 
 import {saveContact, saveContactReset} from '../../redux/contact/actions';
 import {AppDispatch, RootState} from '../../redux/store';

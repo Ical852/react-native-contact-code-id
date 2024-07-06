@@ -1,7 +1,7 @@
 import {useCallback, useMemo, useState} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {constants} from '../../utils';
 import {Contact, SearchScreenProps} from '../../types';
-import {useFocusEffect} from '@react-navigation/native';
 
 export const useSearch = (props: SearchScreenProps) => {
   const {

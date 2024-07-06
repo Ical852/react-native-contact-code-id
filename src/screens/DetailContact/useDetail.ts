@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from "react";
-import { Contact, DetailScreenProps } from "../../types/modules/contacts";
 import { Alert } from "react-native";
 import { showMessage } from "react-native-flash-message";
+import { Contact, DetailScreenProps } from "../../types/modules/contacts";
 
 export const useDetail = (props: DetailScreenProps) => {
   const {
