@@ -36,8 +36,6 @@ export const useEdit = (props: EditScreenProps) => {
     setPhoto('');
   }, [disabledSubmit, params]);
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     if (updateContactError) {
       showMessage({
@@ -47,6 +45,7 @@ export const useEdit = (props: EditScreenProps) => {
       });
       updateContactReset();
       setTimeout(() => {
+        navigation.goBack();
         navigation.goBack();
       }, 1000);
     }
@@ -58,6 +57,7 @@ export const useEdit = (props: EditScreenProps) => {
       });
       updateContactReset();
       setTimeout(() => {
+        navigation.goBack();
         navigation.goBack();
       }, 1000);
     }

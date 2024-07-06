@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { Contact, DetailScreenProps } from "../../types/modules/contacts";
 import { Alert } from "react-native";
 import { showMessage } from "react-native-flash-message";
@@ -14,15 +14,20 @@ export const useDetail = (props: DetailScreenProps) => {
     deleteContactSuccess,
     deleteContactResponse,
 
-    route: {params}
+    route: {params},
   } = props;
 
-  const onDelete = useCallback((data: Contact) => {
-    Alert.alert('Confirm', 'Are you sure want to delete', [
+  const fullName = useMemo(() => (`${params.firstName} ${params.lastName}`), [params]);
+
+  const onBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+  const onDelete = useCallback(() => {
+    Alert.alert('Confirm', 'Are you sure want to delete this contact?', [
       {
         text: 'Yes',
         onPress: () => {
-          deleteContact(data);
+          deleteContact(params);
         },
       },
       {
@@ -32,7 +37,7 @@ export const useDetail = (props: DetailScreenProps) => {
         },
       },
     ]);
-  }, []);
+  }, [params]);
   const onEdit = useCallback(
     (data: Contact) => {
       navigation.navigate('EditContact', data);
@@ -48,6 +53,9 @@ export const useDetail = (props: DetailScreenProps) => {
         type: 'danger',
       });
       deleteContactReset();
+      setTimeout(() => {
+        navigation.goBack();
+      }, 500);
     }
     if (deleteContactSuccess) {
       showMessage({
@@ -56,13 +64,19 @@ export const useDetail = (props: DetailScreenProps) => {
         type: 'success',
       });
       deleteContactReset();
+      setTimeout(() => {
+        navigation.goBack();
+      }, 500);
     }
     return;
   }, [deleteContactResponse]);
 
   return {
+    fullName,
     loading: deleteContactLoading,
+    onBack,
     onDelete,
     onEdit,
+    detail: params,
   };
 }
