@@ -20,7 +20,7 @@ export const useSearch = (props: SearchScreenProps) => {
     return getAllContactResponse?.data?.filter(
       (fil: Contact) => {
         const name = fil?.firstName + " " + fil?.lastName
-        return name?.toLowerCase()?.includes(search) ||
+        return name?.toLowerCase()?.includes(search.toLowerCase()) ||
           fil?.age?.toString()?.includes(search);
       }
     );
